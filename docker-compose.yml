@@ -3,7 +3,9 @@ services:
   scanner:
     image: "otterscan/otterscan:latest"
     environment:
-      - "ERIGON_URL=http://rpcdaemon.otterscan.public.dappnode:8545"
+      - "ERIGON_URL=http://192.168.1.131:8555"
+    ports:
+      - 8000:80
   rpcdaemon:
     build:
       context: rpcdaemon
@@ -12,6 +14,13 @@ services:
     environment:
       RPCDAEMON_EXTRA_OPTS: "--http.api=eth,debug,net,web3,ots,erigon"
     restart: unless-stopped
+    pid: "container:DAppNodePackage-erigon.erigon.dnp.dappnode.eth"
+    volumes:
+      - data:/home/erigon/.local/share
     ports:
-      - "8545"
+      - 8555:8545
     image: "rpcdaemon.otterscan.public.dappnode.eth:0.1.1"
+volumes:
+  data:
+    external: true
+    name: erigondnpdappnodeeth_data

@@ -19,7 +19,7 @@ RUN git clone -b ${UPSTREAM_VERSION}-otterscan --recurse-submodules -j8 https://
 RUN go mod download
 RUN make rpcdaemon
 
-FROM alpine:3.13
+FROM alpine:3.16
 
 RUN apk add --no-cache ca-certificates libgcc libstdc++ tzdata
 
@@ -28,6 +28,7 @@ COPY --from=builder /app/build/bin/* /usr/local/bin/
 EXPOSE 80
 
 ENTRYPOINT [ "sh", "-c", "exec rpcdaemon \
+    --datadir=/home/erigon/.local/share \
     --private.api.addr=\"erigon:9090\" \
     --http.addr=\"0.0.0.0\" \
     --http.vhosts=\"*\" \

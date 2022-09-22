@@ -1,24 +1,29 @@
 {
   "name": "otterscan.public.dappnode.eth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "shortDescription": "A blazingly fast, local, Ethereum block explorer built on top of Erigon",
   "description": "A blazingly fast, local, Ethereum block explorer built on top of Erigon",
-  "upstreamVersion": "v2021.11.03",
+  "upstreamVersion": "v2022.09.01",
   "upstreamRepo": "wmitsuda/erigon",
   "upstreamArg": "UPSTREAM_VERSION",
   "type": "service",
   "dependencies": {
-    "erigon.dnp.dappnode.eth": "^0.1.14"
+    "erigon.dnp.dappnode.eth": "^0.1.30"
   },
-  "categories": ["Developer tools"],
-  "architectures": ["linux/amd64"],
+  "categories": [
+    "Developer tools"
+  ],
+  "architectures": [
+    "linux/amd64"
+  ],
   "author": "Andrew Redden <opensource@andrewredden.com> (https://github.com/androolloyd)",
   "contributors": [
-    "Willian Mitsuda <wmitsuda@gmail.com> (https://github.com/wmitsuda)"
+    "Willian Mitsuda <wmitsuda@gmail.com> (https://github.com/wmitsuda)",
+    "Louis Garoche <louis@garoche.me> (https://github.com/lgaroche)"
   ],
   "links": {
     "homepage": "https://github.com/wmitsuda/otterscan",
-    "scanner": "http://scanner.otterscan.public.dappnode"
+    "otterscan UI": "http://scanner.otterscan.public.dappnode"
   },
   "mainService": "rpcdaemon",
   "license": "GLP-3.0",

@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine3.13 as builder
+FROM golang:1.19-alpine3.16 as builder
 
 ARG git_commit
 ENV GIT_COMMIT=$git_commit
@@ -24,6 +24,8 @@ FROM alpine:3.13
 RUN apk add --no-cache ca-certificates libgcc libstdc++ tzdata
 
 COPY --from=builder /app/build/bin/* /usr/local/bin/
+
+EXPOSE 80
 
 ENTRYPOINT [ "sh", "-c", "exec rpcdaemon \
     --private.api.addr=\"erigon:9090\" \
